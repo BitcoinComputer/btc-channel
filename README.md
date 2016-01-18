@@ -17,7 +17,7 @@ Assign the Coinbase channel as the system default.
 # btc-channel --configure -s=btc-channel-coinbase
 ```
 
-Create a payment request for 0.258 bitcoin. Echoes a payment request id, eg: `543df896f34321e985fec37ea0de69d5`.
+Create a payment request for 0.258 bitcoin. Provides a payment request id to stdout, eg: `543df896f34321e985fec37ea0de69d5`.
 ```
 $ btc-channel --create -a 0.258
 ```
@@ -27,7 +27,7 @@ Generate a payment request body for request `543df896f34321e985fec37ea0de69d5`. 
 btc-channel 543df896f34321e985fec37ea0de69d5 --body
 ```
 
-Query whether payment request `543df896f34321e985fec37ea0de69d5` has been paid. Will echo a 0 if unfulfilled, 1 if fulfilled.
+Query whether payment request `543df896f34321e985fec37ea0de69d5` has been paid. Will stdout a 0 if unfulfilled, 1 if fulfilled.
 ```
 btc-channel 543df896f34321e985fec37ea0de69d5 --verify-payment
 ```
