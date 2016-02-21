@@ -13,3 +13,5 @@ missing
 install-sh
 
 src/btc-channel
+
+*.pyc
