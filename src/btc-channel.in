@@ -7,4 +7,4 @@ from btc_channel.application import Application
 
 if __name__ == "__main__":
     app = Application(package="@PACKAGE@", version="@VERSION@")
-    app.run()
+    app.run(sys.argv[1:])
