@@ -11,7 +11,7 @@ class Application(object):
 
     def __init__(self, *args, **kwargs):
 
-        self.transaction_id = None
+        self.request_id = None
 
         self.configure = False
         self.create = False
@@ -66,7 +66,7 @@ class Application(object):
         if self.create and not self.amount:
             is_valid = False
 
-        if self.verify_payment and not self.transaction_id:
+        if self.verify_payment and not self.request_id:
             is_valid = False
 
         return is_valid
@@ -92,7 +92,7 @@ class Application(object):
             self.usage()
             sys.exit(2)
         for arg in args:
-            self.transaction_id = arg
+            self.request_id = arg
         for opt, arg in opts:
             if opt in ("-h", "--help"):
                 self.usage()
@@ -141,7 +141,7 @@ class Application(object):
             if self.verify_payment:
                 os.system(" ".join([
                     channel,
-                    self.transaction_id,
+                    self.request_id,
                     "--verify-payment"
                 ]))
             elif self.create:
