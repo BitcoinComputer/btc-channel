@@ -11,6 +11,6 @@ do_substitution = sed -e 's,[@]pythondir[@],$(pythondir),g' \
 btc-channel: btc-channel.in Makefile
 	$(do_substitution) < $(srcdir)/btc-channel.in > btc-channel
 	chmod +x btc-channel
-	test -s /var/lib/btc-channel || { \
-	    mkdir -p /var/lib/btc-channel; \
-	}
+
+install-data-local:
+	mkdir -p /var/lib/btc-channel
