@@ -15,6 +15,7 @@ class Application(object):
 
         self.configure = False
         self.create = False
+        self.body = False
         self.verify_payment = False
 
         self.channel = None
@@ -49,7 +50,14 @@ class Application(object):
 
         is_valid = True
 
-        if not sum([self.configure, self.create, self.verify_payment]) == 1:
+        if not sum(
+                [
+                    self.configure,
+                    self.create,
+                    self.verify_payment,
+                    self.body,
+                ]
+        ) == 1:
             is_valid = False
 
         if self.configure and not self.channel:
@@ -73,8 +81,11 @@ class Application(object):
                     "help",
                     "configure",
                     "create",
+                    "body",
+                    "verify-payment",
                     "channel=",
-                    "amount="
+                    "amount=",
+                    "memo=",
                 ])
 
         except getopt.GetoptError:
@@ -92,6 +103,8 @@ class Application(object):
                 self.create = True
             elif opt == "--verify-payment":
                 self.verify_payment = True
+            elif opt == "--body":
+                self.body = True
             elif opt == "--amount":
                 self.amount = opt
             elif opt == "--channel":
