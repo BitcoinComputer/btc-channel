@@ -1,6 +1,7 @@
 import getopt
 import sys
 import os
+import subprocess
 import errno
 
 
@@ -21,6 +22,7 @@ class Application(object):
         self.channel = None
 
         self.amount = None
+        self.memo = None
 
     @staticmethod
     def usage():
@@ -106,7 +108,9 @@ class Application(object):
             elif opt == "--body":
                 self.body = True
             elif opt == "--amount":
-                self.amount = opt
+                self.amount = arg
+            elif opt == "--memo":
+                self.memo = arg
             elif opt == "--channel":
                 self.channel = arg
 
@@ -138,18 +142,40 @@ class Application(object):
         else:
             channel = self.get_channel()
 
-            if self.verify_payment:
-                os.system(" ".join([
-                    channel,
-                    self.request_id,
-                    "--verify-payment"
-                ]))
-            elif self.create:
-                os.system(" ".join([
-                    channel,
-                    "--create",
-                    "--amount",
-                    self.amount
-                ]))
+            if self.create:
+                result = subprocess.check_output(
+                    [
+                        channel,
+                        "--create",
+                        "--amount=" + self.amount,
+                    ],
+                    stderr=subprocess.STDOUT
+                )
+
+                print result
+
+            elif self.body:
+                result = subprocess.check_output(
+                    [
+                        channel,
+                        self.request_id,
+                        "--body",
+                    ],
+                    stderr=subprocess.STDOUT
+                )
+
+                print result
+
+            elif self.verify_payment:
+                result = subprocess.check_output(
+                    [
+                        channel,
+                        self.request_id,
+                        "--verify-payment",
+                    ],
+                    stderr=subprocess.STDOUT
+                )
+
+                print result
 
 
