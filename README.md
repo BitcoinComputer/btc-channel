@@ -13,6 +13,7 @@ Installation
 
 1. Download the `btc-system-channel-0.1.tar.gz` from the latest release.
 2. Untar and install:
+
   ```
   $> tar -xvf btc-system-channel-0.1.tar.gz
   $> cd btc-system-channel
