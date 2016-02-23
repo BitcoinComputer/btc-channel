@@ -22,7 +22,7 @@ Create a payment request for 0.258 bitcoin. Provides a payment request id to std
 $ btc-channel --create -a 0.258
 ```
 
-Generate a payment request body for request `543df896f34321e985fec37ea0de69d5`. Request body shall be in JSON-formatted BIP22.
+Generate a payment request body for request `543df896f34321e985fec37ea0de69d5`. Request body shall be in Bitcoin URI BIP21 format.
 ```
 btc-channel 543df896f34321e985fec37ea0de69d5 --body
 ```
