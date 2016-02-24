@@ -21,7 +21,7 @@ Installation
   $> make
   $> sudo make install
   ```
-3. Install and configure a specific payment channel interface. The are currently available interfaces for:
+3. Install and configure a specific payment channel interface. There are currently available interfaces for:
   * [Electrum](https://github.com/BitcoinComputer/btc-channel-electrum)
 
 
